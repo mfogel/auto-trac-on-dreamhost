@@ -71,10 +71,6 @@ echo "Make Trac Web Accessible"
 mkdir -p ${WEBDIR}
 chmod 751 ${WEBDIR}
 
-# Copy the cgi-bin dir
-mkdir -p ${PKG}/share/trac
-cp -fr ${INSTALL}/${TRACDIR}/cgi-bin ${PKG}/share/trac
-
 if [ -f "${INDEX_CGI}" ]; then
     rm ${INDEX_CGI}
 fi

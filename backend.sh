@@ -40,6 +40,8 @@ cd ${PYGMENTSDIR} && python setup.py install --prefix=${PKG}
 echo -e "\n==== Installing Trac ===="
 cd ${INSTALL} && tar xzf ${TRACDIR}.tar.gz
 cd ${TRACDIR} && python setup.py install --prefix=${PKG}
+mkdir -p ${PKG}/share/trac
+cp -fr ${INSTALL}/${TRACDIR}/cgi-bin ${PKG}/share/trac
 
 echo -e "\n==== Setting permissions for Trac htdocs ===="
 DIR=${TRAC_HTDOCS}
