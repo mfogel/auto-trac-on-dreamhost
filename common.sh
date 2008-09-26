@@ -5,6 +5,8 @@
 # Abort on any errors
 set -e
 
+TRAC_VERSION=0.11.1
+
 # trac dir structure
 TRAC_ROOT="${HOME}/trac"
 PKG=${TRAC_ROOT}/packages
@@ -13,7 +15,7 @@ INSTALL=${TRAC_ROOT}/install
 SITES=${TRAC_ROOT}/sites
 SVN=${HOME}/svn
 TRAC_SITE_PACKAGES=${PKG}/lib/python2.3/site-packages
-TRAC_HTDOCS=${TRAC_SITE_PACKAGES}/Trac-0.11.1-py2.3.egg/trac/htdocs
+TRAC_HTDOCS=${TRAC_SITE_PACKAGES}/Trac-${TRAC_VERSION}-py2.3.egg/trac/htdocs
 
 EXP_CMD1="export PYTHONPATH=$TRAC_SITE_PACKAGES"
 EXP_CMD2="export PYTHON_EGG_CACHE=$EGG"
@@ -40,13 +42,13 @@ if [[ "$PATH" != *"$PKG/bin"* ]]; then export PATH=$PKG/bin:$PATH; fi
 
 # Update version information here and DIRs below.
 
-TRAC=http://ftp.edgewall.com/pub/trac/Trac-0.11.1.tar.gz
+TRAC=http://ftp.edgewall.com/pub/trac/Trac-${TRAC_VERSION}.tar.gz
 GENSHI=http://ftp.edgewall.com/pub/genshi/Genshi-0.5.tar.gz
 SETUPTOOLS=http://peak.telecommunity.com/dist/ez_setup.py
 MYSQLDB=http://switch.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.2.tar.gz
 PYGMENTS=http://pypi.python.org/packages/source/P/Pygments/Pygments-0.9.tar.gz
 
-TRACDIR=Trac-0.11.1
+TRACDIR=Trac-${TRAC_VERSION}
 GENSHIDIR=Genshi-0.5
 MYSQLDBDIR=MySQL-python-1.2.2
 PYGMENTSDIR=Pygments-0.9
