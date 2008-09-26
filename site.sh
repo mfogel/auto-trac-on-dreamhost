@@ -4,88 +4,29 @@
 
 source ./common.sh
 
-# Prompt for required parameters.
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter Subversion project ID (e.g. somesvnproject):"
-    read PROJECT
-    echo "You entered \"$PROJECT\".  Is this correct? (y/n)"
-    read verify
-done
+# Defaults
+PROJECT=somesvnproject
+DOMAIN=trac.somedomain.com
+DOMAINDIR=${HOME}/http/$DOMAIN  # default refreshed after sampling DOMAIN
+TRACPATH=/trac
+MYSQLHOST=mysql.$DOMAIN         # default refreshed after sampling DOMAIN
+MYSQLUSER=trac_username
+MYSQLPASSWD=trac_password
+MYSQLDBNAME=trac_db
 
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter the domain for trac (e.g. trac.somedomain.com):"
-    read DOMAIN
-    echo "You entered \"$DOMAIN\".  Is this correct? (y/n)"
-    read verify
-done
+# Prompt on those defaults
+getInput "Subversion Project ID"                 PROJECT
+getInput "Domain for Trac"                       DOMAIN
+DOMAINDIR=${HOME}/http/$DOMAIN
+MYSQLHOST=mysql.$DOMAIN
+getInput "Path for domain root"                  DOMAINDIR
+getInput "Path for Trac relative to domain root" TRACPATH
+getInput "MySQL hostname"                        MYSQLHOST
+getInput "MySQL username"                        MYSQLUSER 
+getInput "MySQL password"                        MYSQLPASSWD
+getInput "MySQL DB name"                         MYSQLDBNAME
 
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter path for the domain root (e.g. ${HOME}/http/somedomain.com/trac):"
-    read DOMAINDIR
-    echo "You entered \"$DOMAINDIR\".  Is this correct? (y/n)"
-    read verify
-done
-
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter the path for trac, relative to the domain root (e.g. /trac, or blank for the domain root):"
-    read TRACPATH
-    echo "You entered \"$TRACPATH\".  Is this correct? (y/n)"
-    read verify
-done
-
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter MySQL hostname (e.g. mysql.somedomain.com):"
-    read MYSQLHOST
-    echo "You entered \"$MYSQLHOST\".  Is this correct? (y/n)"
-    read verify
-done
-
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter MySQL username (e.g. trac_username):"
-    read MYSQLUSER
-    echo "You entered \"$MYSQLUSER\".  Is this correct? (y/n)"
-    read verify
-done
-
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter MySQL password (e.g. trac_password):"
-    read MYSQLPASSWD
-    echo "You entered \"$MYSQLPASSWD\".  Is this correct? (y/n)"
-    read verify
-done
-
-verify="n"
-while [ "$verify" != y ];
-do
-    echo "Enter MySQL DB name (e.g. trac_db):"
-    read MYSQLDBNAME
-    echo "You entered \"$MYSQLDBNAME\".  Is this correct? (y/n)"
-    read verify
-done
-
-#PROJECT=misc
-#DOMAIN=trac.cbxt.net
-#DOMAINDIR=/home/mikef/http/cbxt.net/trac
-#TRACPATH=/tmptest
-#MYSQLHOST=mysql.trac.cbxt.net
-#MYSQLUSER=mikeftrac
-#MYSQLPASSWD=ta46keXT
-#MYSQLDBNAME=trac_tmptest
-
+# using these values
 echo "PROJECT:${PROJECT}"
 echo "DOMAIN:${DOMAIN}"
 echo "DOMAINDIR:${DOMAINDIR}"
