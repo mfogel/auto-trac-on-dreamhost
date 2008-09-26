@@ -25,6 +25,10 @@ echo -e "\n==== Installing Setup Tools ===="
 mkdir -p ${TRAC_SITE_PACKAGES}
 [ -z `which easy_install` ] && cd ${INSTALL} && python ez_setup.py --prefix=${PKG}
 
+echo -e "\n==== Installing Pygments ===="
+cd ${INSTALL} && tar xzf ${PYGMENTSDIR}.tar.gz
+cd ${PYGMENTSDIR} && python setup.py install --prefix=${PKG}
+
 echo -e "\n==== Installing MYSQLdb ===="
 cd ${INSTALL} && tar xzf ${MYSQLDBDIR}.tar.gz
 cd ${MYSQLDBDIR} && python setup.py install --prefix=${PKG}
@@ -32,10 +36,6 @@ cd ${MYSQLDBDIR} && python setup.py install --prefix=${PKG}
 echo -e "\n==== Installing Genshi ===="
 cd ${INSTALL} && tar xzf ${GENSHIDIR}.tar.gz
 cd ${GENSHIDIR} && python setup.py install --prefix=${PKG}
-
-echo -e "\n==== Installing Pygments ===="
-cd ${INSTALL} && tar xzf ${PYGMENTSDIR}.tar.gz
-cd ${PYGMENTSDIR} && python setup.py install --prefix=${PKG}
 
 echo -e "\n==== Installing Trac ===="
 cd ${INSTALL} && tar xzf ${TRACDIR}.tar.gz
