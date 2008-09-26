@@ -12,7 +12,9 @@ TRACPATH=/trac
 MYSQLHOST=mysql.$DOMAIN         # default refreshed after sampling DOMAIN
 MYSQLUSER=trac_username
 MYSQLPASSWD=trac_password
-MYSQLDBNAME=trac_db
+MYSQLDBNAME=trac_$PROJECT       # default refreshed after sampling PROJECT
+TRAC_USER=admin
+TRAC_PASSWORD=password
 
 # Prompt on those defaults
 getInput "Subversion Project ID"                 PROJECT
@@ -24,7 +26,10 @@ getInput "Path for Trac relative to domain root" TRACPATH
 getInput "MySQL hostname"                        MYSQLHOST
 getInput "MySQL username"                        MYSQLUSER 
 getInput "MySQL password"                        MYSQLPASSWD
+MYSQLDBNAME=trac_$PROJECT
 getInput "MySQL DB name"                         MYSQLDBNAME
+getInput "Trac Admin username"                   TRAC_USER
+getInput "Trac Admin password"                   TRAC_PASSWORD
 
 # using these values
 echo "PROJECT:${PROJECT}"
@@ -35,6 +40,8 @@ echo "MYSQLHOST:${MYSQLHOST}"
 echo "MYSQLUSER:${MYSQLUSER}"
 echo "MYSQLPASSWD:${MYSQLPASSWD}"
 echo "MYSQLDBNAME:${MYSQLDBNAME}"
+echo "TRAC_USER:${TRAC_USER}"
+echo "TRAC_PASSWORD:${TRAC_PASSWORD}"
 
 # Vars for this site
 WEBDIR=${DOMAINDIR}/${TRACPATH}
@@ -56,9 +63,7 @@ if [ ! -d ${SITES}/${PROJECT} ]; then
 
     # set admin user to premissions
     ${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
-    permission add admins TRAC_ADMIN
-    ${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
-    permission add admin admins
+    permission add $TRAC_USER TRAC_ADMIN
 fi
 
 echo "Make Trac Web Accessible"
@@ -117,8 +122,8 @@ echo "RewriteCond %{REQUEST_FILENAME} !-d" >> ${HTACCESS}
 echo "RewriteRule ^(.*)\$ ${TRACPATH}/index.cgi/\$1 [L]" >> ${HTACCESS}
 echo "</IfModule>" >> ${HTACCESS}
 
-#Create .htpasswd file and add admin with default password 'password'
-echo "admin:\$apr1\$2PpwG/..\$09tzwaDfzKx4Yu/od5Alw0" >> ${HTPASSWD}
+#Create .htpasswd file for trac admin with password
+htpasswd -bc ${HTPASSWD} $TRAC_USER "$TRAC_PASSWORD"
 
 # Note: on dreamhost you avoid a world-readable htpasswd file by setting
 # one up via panel.dreamhost.com->Goodies->Htaccess/WebDAV.  This will
