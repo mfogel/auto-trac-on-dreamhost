@@ -87,7 +87,7 @@ chmod 755 ${INDEX_CGI}
 # logo in trac.ini 
 sed -i "s/^alt = .*$/alt = trac_banner.png/" ${TRACINI}
 # some fancy sed to escape forward slashes... simplier patches are welcome.
-TRACPATH_S=`echo ${TRACPATH} | sed -e "s/\//\\\\\\ \//g" -e "s/ \//\//g"`
+TRACPATH_S=`echo ${TRACPATH} | sed -e "s/\/$//" -e "s/\//\\\\\\ \//g" -e "s/ \//\//g"`
 sed -i "s/^src = .*$/src = ${TRACPATH_S}\/chrome\/common\/trac_banner.png/" ${TRACINI}
 
 #Pretty URLs
