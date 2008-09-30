@@ -1,6 +1,7 @@
 # trac_install_backend.sh
 # adapted from script from http://wiki.dreamhost.com/DreamTracInstall
-# Michael Fogel, 2008.  http://fogel.ca
+# released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
+# Copyright 2008 Michael Fogel. http://fogel.ca
 
 source ./common.sh
 
