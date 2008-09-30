@@ -1,9 +1,8 @@
-# trac_install_backend.sh
-# adapted from script from http://wiki.dreamhost.com/DreamTracInstall
-# released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
+# AutoTracOnDreamhost: backend.sh
+# Released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
 # Copyright 2008 Michael Fogel. http://fogel.ca
 
-source ./common.sh
+source ./configure.inc
 
 echo -e "\n==== Creating need dir structure ===="
 [ ! -d ${PKG} ] && mkdir -p ${PKG}

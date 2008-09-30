@@ -1,6 +1,5 @@
-# trac_install_common.sh
-# adapted from script from http://wiki.dreamhost.com/DreamTracInstall
-# released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
+# AutoTracOnDreamhost: site.sh
+# Released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
 # Copyright 2008 Michael Fogel. http://fogel.ca
 
 # Abort on any errors
