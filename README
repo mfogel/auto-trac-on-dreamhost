@@ -55,17 +55,18 @@ Do once per trac site:
 #################### Help Me! #############################
 
 I'll post about any major updates or known bugs on my blog.
-http://blog.fogel.ca  In event of enough interest in this
-software, I'll set up a public repository for it so we can
+http://blog.fogel.ca  In event of enough interest in these
+scripts, I'll set up a public repository for it so we can
 all contribute.
 
+If you find any major bugs or want to submit a patch, you can
+email me which is my first name (mike) at my domain (fogel.ca).
+Requests for personalized help will be answered in the limit
+of infinite free time, which I don't have, so no promises.
+
 Elsewise, the best conclaminatoration of information about Trac
-on Dreamhost is currently at on the Dreamhost wiki.
+on Dreamhost AFAIK is currently at on the Dreamhost wiki.
 http://wiki.dreamhost.com/Trac
 
 ###########################################################
-
-
-   
-
 
