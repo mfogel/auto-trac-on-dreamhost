@@ -60,14 +60,13 @@ PYGMENTSDIR=Pygments-${PYGMENTS_VERS}
 # arg 1: message
 # arg 2: initial value
 function getInput {
-  MES="$1"
+	MES="$1"
 	eval "VAL=\$$2"
 	echo ""
 	echo "Press enter to accept the current value, or input a new value."
 	TMP="$VAL"
-	while [[ -n "$TMP" ]];
-	do
-	  VAL="$TMP"
+	while [[ -n "$TMP" ]]; do
+		VAL="$TMP"
 		echo "$MES: $VAL"
 		read TMP
 	done
