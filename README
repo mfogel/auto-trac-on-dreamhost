@@ -1,0 +1,71 @@
+AutoTracOnDreamhost: README
+
+#################### LICENSE ##############################
+
+AutoTracOnDreamhost is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+http://www.gnu.org/licenses/gpl-3.0.html
+
+#################### HowTo ################################
+
+Preliminaries:
+
+  1. Assuming you're going to use this with SVN, you need to already
+     have an SVN repository setup and running.  The webserver needs
+     to have at least read permissions to the repository.
+
+  2. You need to have a complete domain/subdomain set up to use
+     with trac or a subdirectory of an existing domain.
+
+  3. A MySQL database ready to use with trac.  This doesn't have to be
+     it's own database, but AFAIK, there is no good reason not to
+     give each trac site it's own database.
+
+Do once: 
+
+  1. Edit the configure.inc:
+
+     - you probably want the latest and greatest of Trac, Genshi,
+       MySQLDB, and Pygments.  Minor version releases of these 
+       shouldn't break this script.
+
+     - alter the trac directory structure to your liking, or just
+       run with my setup.
+
+  2. Run the backend.sh.  This will set up all the parts of trac that
+     are shared between all your trac sites (even if you have only one).
+
+Do once per trac site:
+
+  1. Run the site.sh.  This script will query you for details about
+     the configuration of your database, your directory structure,
+     svn repository, an admin trac user etc.
+
+  2. Test it! Go to your new trac url and log in, browse the svn
+     repository, create a dummy ticket etc.
+
+#################### Help Me! #############################
+
+I'll post about any major updates or known bugs on my blog.
+http://blog.fogel.ca  In event of enough interest in this
+software, I'll set up a public repository for it so we can
+all contribute.
+
+Elsewise, the best conclaminatoration of information about Trac
+on Dreamhost is currently at on the Dreamhost wiki.
+http://wiki.dreamhost.com/Trac
+
+###########################################################
+
+
+   
+
+
