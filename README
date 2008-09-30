@@ -1,11 +1,11 @@
 AutoTracOnDreamhost: README
 
-#################### LICENSE ##############################
+#################### LICENSE #####################
 
-AutoTracOnDreamhost is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+AutoTracOnDreamhost is free software: you can redistribute
+it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,7 +14,7 @@ GNU General Public License for more details.
 
 http://www.gnu.org/licenses/gpl-3.0.html
 
-#################### HowTo ################################
+#################### HowTo #######################
 
 Preliminaries:
 
@@ -25,9 +25,9 @@ Preliminaries:
   2. You need to have a complete domain/subdomain set up to use
      with trac or a subdirectory of an existing domain.
 
-  3. A MySQL database ready to use with trac.  This doesn't have to be
-     it's own database, but AFAIK, there is no good reason not to
-     give each trac site it's own database.
+  3. A MySQL database ready to use with trac.  This doesn't have to
+     be it's own database, but AFAIK, there is no good reason not
+     to give each trac site it's own database.
 
 Do once: 
 
@@ -52,7 +52,7 @@ Do once per trac site:
   2. Test it! Go to your new trac url and log in, browse the svn
      repository, create a dummy ticket etc.
 
-#################### Help Me! #############################
+#################### Help Me! ####################
 
 I'll post about any major updates or known bugs on my blog.
 http://blog.fogel.ca  In event of enough interest in these
@@ -68,5 +68,5 @@ Elsewise, the best conglamoration of information about Trac
 on Dreamhost AFAIK is currently at on the Dreamhost wiki.
 http://wiki.dreamhost.com/Trac
 
-###########################################################
+##################################################
 

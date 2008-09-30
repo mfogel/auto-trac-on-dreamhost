@@ -121,12 +121,13 @@ echo "</IfModule>" >> ${HTACCESS}
 #Create .htpasswd file for trac admin with password
 htpasswd -bc ${HTPASSWD} $TRAC_USER "$TRAC_PASSWORD"
 
-# Note: on dreamhost you avoid a world-readable htpasswd file by setting
-# one up via panel.dreamhost.com->Goodies->Htaccess/WebDAV.  This will
-# make htpasswd and htaccess files (overwriting anything that's there)
-# that has group dhapache, is group readable, and the apache user is in the
-# dhapache group.  Baring this, you need to make your htpasswd file 
-# word-readable (or email support for some chgrp action as root)
+# Note: on dreamhost you avoid a world-readable htpasswd file by
+# setting one up via panel.dreamhost.com->Goodies->Htaccess/WebDAV.
+# This will make htpasswd and htaccess files (overwriting anything
+# that's there) that has group dhapache, is group readable, and
+# the apache user is in the dhapache group.  Baring this, you need
+# to make your htpasswd file word-readable (or email support for
+# some chgrp action as root)
 chmod 644 ${HTPASSWD}
 
 echo ---------- SITE INSTALL COMPLETE! ----------
