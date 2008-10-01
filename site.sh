@@ -1,4 +1,4 @@
-# AutoTracOnDreamhost: site.sh
+# AutoTracOnDreamHost: site.sh
 # Released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
 # Copyright 2008 Michael Fogel. http://fogel.ca
 
@@ -121,7 +121,7 @@ echo "</IfModule>" >> ${HTACCESS}
 #Create .htpasswd file for trac admin with password
 htpasswd -bc ${HTPASSWD} $TRAC_USER "$TRAC_PASSWORD"
 
-# Note: on dreamhost you avoid a world-readable htpasswd file by
+# Note: on DreamHost you avoid a world-readable htpasswd file by
 # setting one up via panel.dreamhost.com->Goodies->Htaccess/WebDAV.
 # This will make htpasswd and htaccess files (overwriting anything
 # that's there) that has group dhapache, is group readable, and

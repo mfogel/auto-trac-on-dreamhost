@@ -1,4 +1,4 @@
-# AutoTracOnDreamhost: backend.sh
+# AutoTracOnDreamHost: backend.sh
 # Released under GLPv3. http://www.gnu.org/licenses/gpl-3.0.html
 # Copyright 2008 Michael Fogel. http://fogel.ca
 
