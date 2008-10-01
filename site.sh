@@ -54,16 +54,16 @@ NAME="Trac: ${DOMAIN}${TRACPATH}/"
 echo "Setup site"
 if [ ! -d ${SITES}/${PROJECT} ]; then
 
-    #Setup Trac Environment for MySQL
-    ${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
-        initenv ${PROJECT} \
-        "mysql://${MYSQLUSER}:${MYSQLPASSWD}@${MYSQLHOST}/${MYSQLDBNAME}" \
-        svn \
-        ${SVN}/${PROJECT};
+	#Setup Trac Environment for MySQL
+	${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
+		initenv ${PROJECT} \
+		"mysql://${MYSQLUSER}:${MYSQLPASSWD}@${MYSQLHOST}/${MYSQLDBNAME}" \
+		svn \
+		${SVN}/${PROJECT};
 
-    # set admin user to premissions
-    ${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
-    permission add $TRAC_USER TRAC_ADMIN
+	# set admin user to premissions
+	${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
+	permission add $TRAC_USER TRAC_ADMIN
 fi
 
 echo "Make Trac Web Accessible"
@@ -72,7 +72,7 @@ mkdir -p ${WEBDIR}
 chmod 751 ${WEBDIR}
 
 if [ -f "${INDEX_CGI}" ]; then
-    rm ${INDEX_CGI}
+	rm ${INDEX_CGI}
 fi
 echo "#!/bin/bash" >> ${INDEX_CGI}
 echo "export HOME=\"/home/${USER}\"" >> ${INDEX_CGI}
@@ -97,7 +97,7 @@ ln -sf ${TRAC_HTDOCS} ${WEBDIR}/chrome/common
 
 # .htaccess fun
 if [ -f ${HTACCESS} ]; then
-    rm ${HTACCESS}
+	rm ${HTACCESS}
 fi
 
 touch ${HTACCESS}
