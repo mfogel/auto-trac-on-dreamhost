@@ -5,6 +5,7 @@
 # Abort on any errors
 set -e
 
+PYTHON_VERS=2.4
 TRAC_VERS=0.11.1
 GENSHI_VERS=0.5.1
 MYSQLDB_VERS=1.2.2
@@ -17,8 +18,8 @@ EGG=${TRAC_ROOT}/egg_cache
 INSTALL=${TRAC_ROOT}/install
 SITES=${TRAC_ROOT}/sites
 SVN=${HOME}/svn
-TRAC_SITE_PACKAGES=${PKG}/lib/python2.3/site-packages
-TRAC_HTDOCS=${TRAC_SITE_PACKAGES}/Trac-${TRAC_VERS}-py2.3.egg/trac/htdocs
+TRAC_SITE_PACKAGES=${PKG}/lib/python${PYTHON_VERS}/site-packages
+TRAC_HTDOCS=${TRAC_SITE_PACKAGES}/Trac-${TRAC_VERS}-py${PYTHON_VERS}.egg/trac/htdocs
 
 EXP_CMD1="export PYTHONPATH=$TRAC_SITE_PACKAGES"
 EXP_CMD2="export PYTHON_EGG_CACHE=$EGG"

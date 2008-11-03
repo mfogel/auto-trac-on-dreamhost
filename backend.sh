@@ -23,7 +23,7 @@ cd ${INSTALL}
 echo -e "\n==== Installing Setup Tools ===="
 #Create site-packages directory. Script will fail without it.
 mkdir -p ${TRAC_SITE_PACKAGES}
-[ -z `which easy_install` ] && cd ${INSTALL} && python ez_setup.py --prefix=${PKG}
+cd ${INSTALL} && python ez_setup.py --prefix=${PKG}
 
 echo -e "\n==== Installing Pygments ===="
 cd ${INSTALL} && tar xzf ${PYGMENTSDIR}.tar.gz
