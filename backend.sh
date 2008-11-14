@@ -46,8 +46,8 @@ cp -fr ${INSTALL}/${TRACDIR}/cgi-bin ${PKG}/share/trac
 echo -e "\n==== Setting permissions for Trac htdocs ===="
 DIR=${TRAC_HTDOCS}
 while [ "$DIR" != "$HOME" ]; do
-	chmod o+x $DIR
-	DIR=`dirname $DIR`
+  chmod o+x $DIR
+  DIR=`dirname $DIR`
 done
 find ${TRAC_HTDOCS} -type d -exec chmod 751 {} \;
 find ${TRAC_HTDOCS} -type f -exec chmod 644 {} \;

@@ -6,7 +6,7 @@
 set -e
 
 PYTHON_VERS=2.4
-TRAC_VERS=0.11.1
+TRAC_VERS=0.11.2
 GENSHI_VERS=0.5.1
 MYSQLDB_VERS=1.2.2
 PYGMENTS_VERS=0.11.1
@@ -61,17 +61,17 @@ PYGMENTSDIR=Pygments-${PYGMENTS_VERS}
 # arg 1: message
 # arg 2: initial value
 function getInput {
-	MES="$1"
-	eval "VAL=\$$2"
-	echo ""
-	echo "Press enter to accept the current value, or input a new value."
-	TMP="$VAL"
-	while [[ -n "$TMP" ]]; do
-		VAL="$TMP"
-		echo "$MES: $VAL"
-		read TMP
-	done
-	echo "Using $MES: $VAL"
-	eval "$2=\"$VAL\""
+  MES="$1"
+  eval "VAL=\$$2"
+  echo ""
+  echo "Press enter to accept the current value, or input a new value."
+  TMP="$VAL"
+  while [[ -n "$TMP" ]]; do
+    VAL="$TMP"
+    echo "$MES: $VAL"
+    read TMP
+  done
+  echo "Using $MES: $VAL"
+  eval "$2=\"$VAL\""
 }
 

@@ -4,34 +4,20 @@
 
 source ./configure.inc
 
-# Defaults
-PROJECT=somesvnproject
-DOMAIN=trac.somedomain.com
-DOMAINDIR=${HOME}/http/$DOMAIN  # default refreshed after sampling DOMAIN
-TRACPATH=/trac
-MYSQLHOST=mysql.$DOMAIN         # default refreshed after sampling DOMAIN
-MYSQLUSER=trac_username
-MYSQLPASSWD=trac_password
-MYSQLDBNAME=trac_$PROJECT       # default refreshed after sampling PROJECT
-TRAC_USER=admin
-TRAC_PASSWORD=password
+# Prompt for project parameters, with defaults
+PROJECT=somesvnproject;         getInput "Subversion Project ID"  PROJECT
+DOMAIN=trac.somedomain.com;     getInput "Domain for Trac"        DOMAIN
+DOMAINDIR=${HOME}/http/$DOMAIN; getInput "Path for domain root"   DOMAINDIR
+TRACPATH=/trac;                 getInput "Relative Path for Trac" TRACPATH
+MYSQLHOST=mysql.$DOMAIN;        getInput "MySQL hostname"         MYSQLHOST
+MYSQLUSER=trac_username;        getInput "MySQL username"         MYSQLUSER 
+MYSQLPASSWD=trac_password;      getInput "MySQL password"         MYSQLPASSWD
+MYSQLDBNAME=trac_$PROJECT;      getInput "MySQL DB name"          MYSQLDBNAME
+TRAC_USER=admin;                getInput "Trac Admin username"    TRAC_USER
+TRAC_PASSWORD=password;         getInput "Trac Admin password"    TRAC_PASSWORD
 
-# Prompt on those defaults
-getInput "Subversion Project ID"                 PROJECT
-getInput "Domain for Trac"                       DOMAIN
-DOMAINDIR=${HOME}/http/$DOMAIN
-MYSQLHOST=mysql.$DOMAIN
-getInput "Path for domain root"                  DOMAINDIR
-getInput "Path for Trac relative to domain root" TRACPATH
-getInput "MySQL hostname"                        MYSQLHOST
-getInput "MySQL username"                        MYSQLUSER 
-getInput "MySQL password"                        MYSQLPASSWD
-MYSQLDBNAME=trac_$PROJECT
-getInput "MySQL DB name"                         MYSQLDBNAME
-getInput "Trac Admin username"                   TRAC_USER
-getInput "Trac Admin password"                   TRAC_PASSWORD
-
-# using these values
+# confirm those values
+echo "Please confirm the values you entered:"
 echo "PROJECT:${PROJECT}"
 echo "DOMAIN:${DOMAIN}"
 echo "DOMAINDIR:${DOMAINDIR}"
@@ -42,6 +28,10 @@ echo "MYSQLPASSWD:${MYSQLPASSWD}"
 echo "MYSQLDBNAME:${MYSQLDBNAME}"
 echo "TRAC_USER:${TRAC_USER}"
 echo "TRAC_PASSWORD:${TRAC_PASSWORD}"
+echo "Look good?"
+lookingGood=Yes;
+getInput "Looking good? 'Yes' to continue, all else to quit." lookingGood
+[ "$lookingGood" != "Yes" ] && exit 1;
 
 # Vars for this site
 WEBDIR=${DOMAINDIR}/${TRACPATH}
@@ -54,16 +44,16 @@ NAME="Trac: ${DOMAIN}${TRACPATH}/"
 echo "Setup site"
 if [ ! -d ${SITES}/${PROJECT} ]; then
 
-	#Setup Trac Environment for MySQL
-	${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
-		initenv ${PROJECT} \
-		"mysql://${MYSQLUSER}:${MYSQLPASSWD}@${MYSQLHOST}/${MYSQLDBNAME}" \
-		svn \
-		${SVN}/${PROJECT};
+  #Setup Trac Environment for MySQL
+  ${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
+    initenv ${PROJECT} \
+    "mysql://${MYSQLUSER}:${MYSQLPASSWD}@${MYSQLHOST}/${MYSQLDBNAME}" \
+    svn \
+    ${SVN}/${PROJECT};
 
-	# set admin user to premissions
-	${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
-	permission add $TRAC_USER TRAC_ADMIN
+  # set admin user to premissions
+  ${PKG}/bin/trac-admin ${SITES}/${PROJECT} \
+  permission add $TRAC_USER TRAC_ADMIN
 fi
 
 echo "Make Trac Web Accessible"
@@ -72,7 +62,7 @@ mkdir -p ${WEBDIR}
 chmod 751 ${WEBDIR}
 
 if [ -f "${INDEX_CGI}" ]; then
-	rm ${INDEX_CGI}
+  rm ${INDEX_CGI}
 fi
 echo "#!/bin/bash" >> ${INDEX_CGI}
 echo "export HOME=\"/home/${USER}\"" >> ${INDEX_CGI}
@@ -97,7 +87,7 @@ ln -sf ${TRAC_HTDOCS} ${WEBDIR}/chrome/common
 
 # .htaccess fun
 if [ -f ${HTACCESS} ]; then
-	rm ${HTACCESS}
+  rm ${HTACCESS}
 fi
 
 touch ${HTACCESS}
