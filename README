@@ -38,6 +38,11 @@ Preliminaries:
      you didn't change anything from the dreamhost default - then you have
      only one user and you can ignore this step.)
 
+  6. To avoid more permission suexec failings by apache, run 'umask 0027'
+     before running these scripts.  This will prevent any of the files
+     created from being world-accessible, which is necessary under DH's
+     suexec policy.  http://wiki.dreamhost.com/Perl#Perl_debugging
+
 Do once: 
 
   1. Edit the configure.inc:
