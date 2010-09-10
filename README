@@ -29,19 +29,10 @@ Preliminaries:
      be it's own database, but AFAIK, there is no good reason not
      to give each trac site it's own database.
 
-  4. Trac 0.11.2.0 requires python 2.4, not 2.3.  Trac 0.11.2.1 (not
-     out as of this writing) should fix this
-     (http://trac.edgewall.org/ticket/7801).
-
-  5. To avoid permission failings by apache, it's best to install this
+  4. To avoid permission failings by apache, it's best to install this
      using the same user as you have apache doing it's cgi stuff under (If
      you didn't change anything from the dreamhost default - then you have
-     only one user and you can ignore this step.)
-
-  6. To avoid more permission suexec failings by apache, run 'umask 0027'
-     before running these scripts.  This will prevent any of the files
-     created from being world-accessible, which is necessary under DH's
-     suexec policy.  http://wiki.dreamhost.com/Perl#Perl_debugging
+     only one user and you can ignore this caveat.)
 
 Do once: 
 

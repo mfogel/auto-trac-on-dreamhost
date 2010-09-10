@@ -6,10 +6,10 @@
 set -e
 
 PYTHON_VERS=2.4
-TRAC_VERS=0.11.3
-GENSHI_VERS=0.5.1
-MYSQLDB_VERS=1.2.2
-PYGMENTS_VERS=1.0
+TRAC_VERS=0.11.7
+GENSHI_VERS=0.6
+MYSQLDB_VERS=1.2.3
+PYGMENTS_VERS=1.3.1
 
 # trac dir structure
 TRAC_ROOT="${HOME}/trac"
@@ -29,6 +29,7 @@ EXP_CMD4="export PATH=$PKG/bin:\$PATH"
 cat <<OutputDreamTracInstallReminder
 
 ==== Put the following in your ~/.bash_profile ====
+Where trac/packages=PKG
 $EXP_CMD1
 $EXP_CMD2
 $EXP_CMD3
