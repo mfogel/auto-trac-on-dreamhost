@@ -29,7 +29,6 @@ EXP_CMD4="export PATH=$PKG/bin:\$PATH"
 cat <<OutputDreamTracInstallReminder
 
 ==== Put the following in your ~/.bash_profile ====
-Where trac/packages=PKG
 $EXP_CMD1
 $EXP_CMD2
 $EXP_CMD3
